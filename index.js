@@ -13,7 +13,7 @@ const expressPort = process.env.EXPRESS_PORT || 8080;
 const mongoConfig = require('./config/mongodb');
 const mongoURL = `mongodb://${mongoConfig.address}:${mongoConfig.port}/${mongoConfig.db}`;
 
-mongoose.connect(mongoURL, { useNewUrlParser: true });
+mongoose.connect(mongoURL, { useNewUrlParser: true, user: mongoConfig.user, pass: mongoConfig.pass });
 mongoose.Promise = global.Promise;
 
 const db = mongoose.connection;
