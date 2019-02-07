@@ -20,7 +20,7 @@ $ npm install
 ```
 
 ## Configuring
-Edit your ./config/mongodb.js to enter the correct information of your MongoDB
+Edit your ```./config/mongodb.js``` to enter the correct information of your MongoDB
 
 ## Running
 ```ssh
