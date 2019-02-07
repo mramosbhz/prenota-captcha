@@ -22,7 +22,7 @@ module.exports.retrieve = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
   let newCaptchaRecord = new Captcha({
-    image: req.body.image,
+    captchafile: req.body.captchafile,
     status: 'RECEIVED'
   });
 
@@ -35,7 +35,7 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
-  Captcha.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true}, (error, captchaResult) => {
+  Captcha.findByIdAndUpdate(req.params.id, {$set: { captchafile: req.body.captchafile }}, {new: true}, (error, captchaResult) => {
     if (error) {
       return next(error);
     }
