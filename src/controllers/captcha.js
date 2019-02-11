@@ -1,4 +1,5 @@
 const Captcha = require('../models/captcha');
+const mongoose = require('mongoose');
 
 module.exports = {};
 
@@ -21,9 +22,15 @@ module.exports.retrieve = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
+  let newIdToInsert = mongoose.Types.ObjectId();
+
   let newCaptchaRecord = new Captcha({
+    _id: newIdToInsert,
+    captcha: newIdToInsert,
     captchafile: req.body.captchafile,
-    status: 'RECEIVED'
+    text: '',
+    status: 'PENDING',
+    is_correct: true
   });
 
   newCaptchaRecord.save((error) => {
@@ -35,7 +42,15 @@ module.exports.create = (req, res, next) => {
 };
 
 module.exports.update = (req, res, next) => {
-  Captcha.findByIdAndUpdate(req.params.id, {$set: { captchafile: req.body.captchafile }}, {new: true}, (error, captchaResult) => {
+  Captcha.findByIdAndUpdate(req.params.id, {
+    $set: { 
+      status: req.body.status, 
+      text: req.body.text, 
+      is_correct: req.body.is_correct 
+    }
+  }, {
+    new: true
+  }, (error, captchaResult) => {
     if (error) {
       return next(error);
     }
