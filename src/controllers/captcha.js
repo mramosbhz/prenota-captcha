@@ -4,7 +4,13 @@ const mongoose = require('mongoose');
 module.exports = {};
 
 module.exports.list = (req, res, next) => {
-  Captcha.find({}, (error, captchaResult) => {
+  let queryParams = {};
+  
+  if (req.query.status) {
+    queryParams.status = req.query.status;
+  }
+
+  Captcha.find(queryParams, (error, captchaResult) => {
     if (error) {
       return next(error);
     }
