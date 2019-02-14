@@ -17,5 +17,9 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mramosbhz/prenota-captcha.git"
   }
 }
