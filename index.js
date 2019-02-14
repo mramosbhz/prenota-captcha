@@ -33,3 +33,5 @@ const server = http.createServer(app);
 server.listen(expressPort, () => {
   console.log(`Express running on port: ${expressPort}`);
 });
+
+global.__basedir = __dirname;

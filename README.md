@@ -1,5 +1,6 @@
-# Captcha Solver - API
-## Dependencies
+# [Captcha Solver - API](#captcha-solver-api) 
+* * *
+## [Dependencies](#dependencies)
 Mongo (docker image)
 ```ssh
 $ docker pull mongo
@@ -14,15 +15,18 @@ $ sudo apt-get install -y mongodb-org
 $ sudo systemctl enable mongod.service
 $ sudo systemctl start mongod.service
 ```
-## Installing
+## [Installing](#installing)
 ```ssh
 $ npm install
 ```
 
-## Configuring
+## [Configuring](#configuring)
 Edit your ```./config/mongodb.js``` to enter the correct information of your MongoDB
-
-## Running
+Create an ```.env``` file with the parameter(s) below:
+```console
+PORT=8080
+```
+## [Running](#running)
 ```ssh
 $ nodemon
 ```
@@ -31,5 +35,6 @@ or
 $ node index.js
 ```
 
-# Todo
-Front-end (all)
+## [Front-end](#front-end)
+The front-end runs with back-end (see [Running](#running)).
+To access it, just hit the link in your browser: http://[ip-address]:[ENV_PORT]/ (e.g. http://127.0.0.1:8080/)
